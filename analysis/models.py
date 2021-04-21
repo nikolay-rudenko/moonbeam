@@ -16,6 +16,7 @@ class Problem(models.Model):
 
 class Solution(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
+    research = models.TextField(null=True, Blank=True)
     solutions = models.TextField(null=True, Blank=True)
     probability = models.FloatField(null=True, blank=True)
     plan = models.TextField(null=True, Blank=True)
