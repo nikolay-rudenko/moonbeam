@@ -23,6 +23,7 @@ class Solution(models.Model):
 class Reflection(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     result = models.TextField(null=True, Blank=True)
+    problem_pattern = models.TextField(null=True, Blank=True)
     solution_pattern = models.TextField(null=True, blank=True)
     principles = models.TextField(null=True, blank=True)
 
