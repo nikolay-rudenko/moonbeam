@@ -19,16 +19,14 @@
 <body>
 <ul class="list-group">
     <div class="container">
-        <button class="btn-toggle">Toggle White-Mode</button>
-        <h1>Hey there! This is just a title</h1>
-        <p>I am just a boring text, existing here solely for the purpose of this demo</p>
-        <p>And I am just another one like the one above me, because two is better than having only one</p>
-        <a href="#">I am a link, don't click me!</a>
-
-
+        <button class="btn-toggle">White-Mode</button>
+        <h3>Site created to help you to have
+            a structure to analise problems any kind</h3>
+        <h3>~</h3>
         <div class="row">
             <div class="col-sm">
                 {% for pr in prb %}
+
                     <h5>Problem: {{ pr.title }}</h5>
                     <li class="list-group-item">{{ pr.description }}</li>
                     <li class="list-group-item">{{ pr.risks }}</li>
@@ -39,7 +37,7 @@
             </div>
             <div class="col-sm">
                 {% for sl in slt %}
-                    <h5>solution: {{ sl.problem.title }}</h5>
+                    <h5>Solution: {{ sl.problem.title }}</h5>
                     <li class="list-group-item">{{ sl.research }}</li>
                     <li class="list-group-item">{{ sl.solutions }}</li>
                     <li class="list-group-item">{{ sl.resources }}</li>
