@@ -13,16 +13,37 @@
 </head>
 <body>
 
-{% for pr in prb %}
-    <ul class="list-group">
-        <h5>Problem</h5>
-        <li class="list-group-item">{{ pr.title }}</li>
-        <li class="list-group-item">{{ pr.description }}</li>
-        <li class="list-group-item">{{ pr.parts }}</li>
-        <li class="list-group-item">{{ pr.causes }}</li>
-        <li class="list-group-item">{{ pr.published }}</li>
 
-    </ul>
-{% endfor %}
+<ul class="list-group">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                {% for pr in prb %}
+                    <h5>Problem</h5>
+                    <li class="list-group-item">{{ pr.title }}</li>
+                    <li class="list-group-item">{{ pr.description }}</li>
+                    <li class="list-group-item">{{ pr.parts }}</li>
+                    <li class="list-group-item">{{ pr.causes }}</li>
+                    <li class="list-group-item">{{ pr.published }}</li>
+                {% endfor %}
+            </div>
+            <div class="col-sm">
+                {% for sl in slt %}
+                    <h5>Solution</h5>
+                    <li class="list-group-item">{{ sl.problem.title }}</li>
+                    <li class="list-group-item">{{ sl.research }}</li>
+                    <li class="list-group-item">{{ sl.solutions }}</li>
+                    <li class="list-group-item">{{ sl.plan }}</li>
+                    <li class="list-group-item">{{ sl.test }}</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</ul>
+
 </body>
 </html>
