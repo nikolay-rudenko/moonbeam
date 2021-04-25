@@ -9,18 +9,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/analysis/style.css' %}">
+
+
     <title>Analysis</title>
 </head>
+
 <body>
-
-
 <ul class="list-group">
-
     <div class="container">
+        <button class="btn-toggle">Toggle White-Mode</button>
+        <h1>Hey there! This is just a title</h1>
+        <p>I am just a boring text, existing here solely for the purpose of this demo</p>
+        <p>And I am just another one like the one above me, because two is better than having only one</p>
+        <a href="#">I am a link, don't click me!</a>
+
+
         <div class="row">
             <div class="col-sm">
                 {% for pr in prb %}
-                    <h5>problem: {{ pr.title }}</h5>
+                    <h5>Problem: {{ pr.title }}</h5>
                     <li class="list-group-item">{{ pr.description }}</li>
                     <li class="list-group-item">{{ pr.risks }}</li>
                     <li class="list-group-item">{{ pr.parts }}</li>
@@ -40,10 +49,8 @@
             </div>
         </div>
     </div>
-    </div>
-
 
 </ul>
-
+<script src="{% static '/analysis/script.js' %}"></script>
 </body>
 </html>
