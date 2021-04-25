@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'moonbeam',
+        'NAME': 'moonbeamV2',
         'USER': 'postgres',
         'PASSWORD': 'Gold_8-8-8',
         'HOST': '127.0.0.1',

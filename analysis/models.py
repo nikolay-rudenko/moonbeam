@@ -8,11 +8,20 @@ class Problem(models.Model):
     causes = models.TextField(null=True, blank=True)
     published = models.DateTimeField(auto_now_add=True, db_index=True, editable=False)
 
+    def __str__(self):
+        return 'Problem: ' + self.title
+
+
+
 class Solution(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     research = models.TextField(null=True, blank=True)
     solutions = models.TextField(null=True, blank=True)
     plan = models.TextField(null=True, blank=True)
+    test = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return 'Solution of: ' + self.problem.title
 
 
 
