@@ -22,6 +22,7 @@
                 {% for pr in prb %}
                     <h5>problem: {{ pr.title }}</h5>
                     <li class="list-group-item">{{ pr.description }}</li>
+                    <li class="list-group-item">{{ pr.risks }}</li>
                     <li class="list-group-item">{{ pr.parts }}</li>
                     <li class="list-group-item">{{ pr.causes }}</li>
                     <li class="list-group-item">{{ pr.published }}</li>
@@ -32,6 +33,7 @@
                     <h5>solution: {{ sl.problem.title }}</h5>
                     <li class="list-group-item">{{ sl.research }}</li>
                     <li class="list-group-item">{{ sl.solutions }}</li>
+                    <li class="list-group-item">{{ sl.resources }}</li>
                     <li class="list-group-item">{{ sl.plan }}</li>
                     <li class="list-group-item">{{ sl.test }}</li>
                 {% endfor %}
