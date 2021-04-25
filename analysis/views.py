@@ -4,8 +4,8 @@ from .models import Problem, Solution
 
 def index(request):
     template = loader.get_template('analysis/index.html')
-    prb = Problem.objects.get_queryset()
-    slt = Solution.objects.get_queryset()
+    prb = Problem.objects.get_queryset().order_by('published')
+    slt = Solution.objects.get_queryset().order_by('id')
     context = {'prb': prb, 'slt': slt}
 
     return HttpResponse(template.render(context, request))
