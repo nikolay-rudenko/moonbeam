@@ -13,7 +13,6 @@ class Problem(models.Model):
         return 'Problem: ' + self.title
 
 
-
 class Solution(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     research = models.TextField(null=True, blank=True)
@@ -24,7 +23,3 @@ class Solution(models.Model):
 
     def __str__(self):
         return 'Solution of: ' + self.problem.title
-
-
-
-

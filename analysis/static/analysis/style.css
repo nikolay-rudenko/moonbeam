@@ -4,7 +4,12 @@
 
 .list-group-item {
     color: #ffc400;
-    background: rgba(18, 18, 18, 0.84);
+    background: rgba(18, 18, 18, 0.09);
+}
+
+body.list-group-item.dark-theme {
+    color: #222;
+    background: #ffffff;
 }
 
 body {
@@ -15,6 +20,11 @@ body {
 body.white-theme {
     color: #222;
     background: #ffffff;
+}
+
+body.dark-theme {
+    color: #ffc400;
+    background: rgba(18, 18, 18, 0.91);
 }
 
 a {
