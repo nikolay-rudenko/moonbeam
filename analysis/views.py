@@ -16,9 +16,16 @@ def index(request):
 class AnCreateView(CreateView):
     template_name = 'analysis/create.html'
     form_class = AnalysisProblemForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('add')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = Problem.objects.all()
         return context
+
+def saved(request):
+    template = loader.get_template('analysis/saved.html')
+    prb = Problem.objects.all()
+    context = {'prb': prb,}
+
+    return HttpResponse(template.render(context, request))
