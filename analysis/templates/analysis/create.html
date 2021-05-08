@@ -4,17 +4,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Доска обьявлений :: Доска обьявлений</title>
+    <title>Result :: Result</title>
 </head>
 <body>
 <div>
-<h1>Проблема</h1>
-<a href="{% url 'index' %}">Главная</a>
-<a href="{% url 'add' %}">Добавить</a>
+<h1>Problem</h1>
+<a href="{% url 'index' %}">Home</a>
+<a href="{% url 'add' %}">Add</a>
 
 {% for rubic in rubics %}
     <a href="{% url 'by_rubric' rubric.pk %}">{{ rubic.name }}</a>
 {% endfor %}
+
 </div>
 <form method="post">
     {% csrf_token %}
