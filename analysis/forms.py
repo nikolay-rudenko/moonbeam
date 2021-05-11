@@ -1,7 +1,16 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 from .models import Problem, Solution
+from django import forms
 
-class AnalysisProblemForm(ModelForm):
+
+class ProblemForm(ModelForm):
     class Meta:
         model = Problem
-        fields = {'title', 'risks', 'description', 'parts', 'causes'}
+        fields = '__all__'
+
+
+class SolutionForm(ModelForm):
+    class Meta:
+        model = Solution
+        fields = '__all__'
+

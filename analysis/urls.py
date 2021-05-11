@@ -1,8 +1,10 @@
 from django.urls import path
-from analysis.views import index, AnCreateView, saved
+from analysis.views import index, saved, delete, ProblemCreate, SolutionCreate
 
 urlpatterns = [
-    path('add/', AnCreateView.as_view(), name='add'),
+    path('addpr/', ProblemCreate.as_view(), name='addpr'),
+    path('addsl/', SolutionCreate.as_view(), name='addsl'),
     path('saved/', saved, name='saved'),
+    path('delete/<problem_id>', delete, name='delete'),
     path('', index, name='index'),
 ]

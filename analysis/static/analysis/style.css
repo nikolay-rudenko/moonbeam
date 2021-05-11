@@ -3,17 +3,14 @@
 }
 
 .list-group-item {
-    color: #ffc400;
+    color: #0387b8;
     background: rgba(18, 18, 18, 0.09);
 }
 
-body.list-group-item.dark-theme {
-    color: #222;
-    background: #ffffff;
-}
+
 
 body {
-    color: #ffc400;
+    color: #00e1ff;
     background: rgba(18, 18, 18, 0.91);
 }
 
