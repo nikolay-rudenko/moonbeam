@@ -25,6 +25,7 @@
                     {% for pr in prb %}
                         <h5>Problem: {{ pr.title }}</h5>
                         <a href="{% url 'delete' pr.pk %}" class="btn btn-warning" role="button" aria-pressed="true">Delete</a>
+                        <a href="{% url 'update_problem' pr.pk %}" class="btn btn-warning" role="button" aria-pressed="true">Update</a>
                         <p></p>
                         <h6>Description</h6>
 
