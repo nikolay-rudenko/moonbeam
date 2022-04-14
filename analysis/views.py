@@ -7,6 +7,7 @@ from .forms import ProblemForm, SolutionForm
 from django.shortcuts import render
 
 
+
 def index(request):
     template = loader.get_template('analysis/index.html')
     prb = Problem.objects.select_related()
@@ -32,15 +33,17 @@ class ProblemCreate(CreateView):
 class UpdateProblem(UpdateView):
         model = Problem
         template_name = 'analysis/update_problem.html'
+
         fields = ['title', 'risks', 'description', 'parts', 'causes']
 
         def post(self, request, *args, **kwargs):
             form = ProblemForm(request.POST)
             if form.is_valid():
                 form.save(commit=True)
-                return HttpResponseRedirect('/saved/')
+                return HttpResponseRedirect('/updated_problem/')
 
             return render(request, self.template_name, {'form': form})
+
 
 
 class SolutionCreate(CreateView):
@@ -57,8 +60,6 @@ class SolutionCreate(CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-
-
 def saved(request):
     template = loader.get_template('analysis/saved.html')
     prb = Problem.objects.select_related()
@@ -66,26 +67,18 @@ def saved(request):
 
     return HttpResponse(template.render(context, request))
 
+def updated_problem(request):
+    template = loader.get_template('analysis/updated_problem.html')
+    prb = Problem.objects.select_related()
+    context = {'prb': prb,}
+
+    return HttpResponse(template.render(context, request))
 
 def delete(request, problem_id=None):
     # import pdb
     # pdb.set_trace()
     problem_to_delete = Problem.objects.get(pk=problem_id)
     problem_to_delete.delete()
-
-    return HttpResponse(index(request))
-
-# the solution to update problem on main page
-def problenUpdateView(request, problem_id=None):
-    # model = Problem
-    # fields = ['title', 'risks', 'description']
-    # template_name_suffix = '_update_form'
-
-    problem_to_update = Problem.objects.get(pk=problem_id)
-    # import pdb
-    # pdb.set_trace()
-    problem_to_update.title = 'Name changed again 3'
-    problem_to_update.save()
 
     return HttpResponse(index(request))
 
