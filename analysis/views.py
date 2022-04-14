@@ -49,7 +49,29 @@ class UpdateProblem(UpdateView):
 class SolutionCreate(CreateView):
     model = Solution
     template_name = 'analysis/create_solution.html'
-    fields = ['problem', 'research', 'solutions', 'resources', 'plan', 'test']
+    fields = ['problem',
+              # 'research',
+              # 'solutions', 'resources', 'plan', 'test'
+              ]
+
+    def post(self, request, *args, **kwargs):
+        form = SolutionForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect('/saved/')
+        import pdb; pdb.set_trace()
+        return render(request, self.template_name, {'form': form})
+
+class SolutionCreate(CreateView):
+    model = Solution
+    template_name = 'analysis/create_solution.html'
+    fields = ['problem',
+              # 'research',
+              'solutions',
+              # 'resources',
+              'plan',
+              # 'test'
+              ]
 
     def post(self, request, *args, **kwargs):
         form = SolutionForm(request.POST)
@@ -58,6 +80,13 @@ class SolutionCreate(CreateView):
             return HttpResponseRedirect('/saved/')
 
         return render(request, self.template_name, {'form': form})
+
+    # def get(self, request):
+    #     # <view logic>
+    #     model = Solution
+    #     template_name = 'analysis/create_solution.html'
+    #
+    #     return HttpResponse(dir(request))
 
 
 def saved(request):
