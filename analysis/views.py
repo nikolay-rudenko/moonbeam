@@ -48,7 +48,7 @@ class UpdateProblem(UpdateView):
 
 class SolutionCreate(CreateView):
     model = Solution
-    template_name = 'analysis/create.html'
+    template_name = 'analysis/create_solution.html'
     fields = ['problem', 'research', 'solutions', 'resources', 'plan', 'test']
 
     def post(self, request, *args, **kwargs):

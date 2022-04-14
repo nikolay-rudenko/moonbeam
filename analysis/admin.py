@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 from .models import Problem, Solution
-from .forms import ProblemForm
 
 class ProblemAdmin(admin.ModelAdmin):
     list_display = ('title', 'risks', 'description','parts', 'causes', 'published')
