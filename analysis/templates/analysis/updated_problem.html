@@ -1,16 +1,9 @@
 {% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Result :: Result</title>
-</head>
-<body>
-
 {% block content %}
+
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Successfully saved the information!</h4>
+        <h4 class="alert-heading">Successfully updated the information!</h4>
     </div>
 
     <ul class="list-group">
@@ -44,32 +37,8 @@
                         <li class="list-group-item">{{ pr.published }}</li>
                     {% endfor %}
                 </div>
-                <div class="col-sm">
-                    {% for sl in slt %}
-                        <h5>Solution: {{ sl.problem.title }}</h5>
-                        <p></p>
-                        <h6>Research</h6>
-                        <li class="list-group-item">{{ sl.research }}</li>
-                        <p></p>
-                        <h6>Solutions</h6>
-                        <li class="list-group-item">{{ sl.solutions }}</li>
-                        <p></p>
-                        <h6>Resources</h6>
-                        <li class="list-group-item">{{ sl.resources }}</li>
-                        <p></p>
-                        <h6>Plan</h6>
-                        <li class="list-group-item">{{ sl.plan }}</li>
-                        <p></p>
-                        <h6>Test</h6>
-                        <li class="list-group-item">{{ sl.test }}</li>
-                        <p></p>
-                    {% endfor %}
-                </div>
             </div>
         </div>
     </ul>
+
 {% endblock content %}
-
-</body>
-</html>
-
