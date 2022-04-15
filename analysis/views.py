@@ -7,7 +7,6 @@ from .forms import ProblemForm, SolutionForm
 from django.shortcuts import render
 
 
-
 def index(request):
     template = loader.get_template('analysis/index.html')
     prb = Problem.objects.select_related()
@@ -30,47 +29,31 @@ class ProblemCreate(CreateView):
 
         return render(request, self.template_name, {'form': form})
 
+
 class UpdateProblem(UpdateView):
-        model = Problem
-        template_name = 'analysis/update_problem.html'
+    model = Problem
+    template_name = 'analysis/update_problem.html'
 
-        fields = ['title', 'risks', 'description', 'parts', 'causes']
-
-        def post(self, request, *args, **kwargs):
-            form = ProblemForm(request.POST)
-            if form.is_valid():
-                form.save(commit=True)
-                return HttpResponseRedirect('/updated_problem/')
-
-            return render(request, self.template_name, {'form': form})
-
-
-
-class SolutionCreate(CreateView):
-    model = Solution
-    template_name = 'analysis/create_solution.html'
-    fields = ['problem',
-              # 'research',
-              # 'solutions', 'resources', 'plan', 'test'
-              ]
+    fields = ['title', 'risks', 'description', 'parts', 'causes']
 
     def post(self, request, *args, **kwargs):
-        form = SolutionForm(request.POST)
+        form = ProblemForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            return HttpResponseRedirect('/saved/')
-        import pdb; pdb.set_trace()
+            return HttpResponseRedirect('/updated_problem/')
+
         return render(request, self.template_name, {'form': form})
+
 
 class SolutionCreate(CreateView):
     model = Solution
     template_name = 'analysis/create_solution.html'
     fields = ['problem',
-              # 'research',
+              'research',
               'solutions',
-              # 'resources',
+              'resources',
               'plan',
-              # 'test'
+              'test'
               ]
 
     def post(self, request, *args, **kwargs):
@@ -89,27 +72,63 @@ class SolutionCreate(CreateView):
     #     return HttpResponse(dir(request))
 
 
+class UpdateSolution(UpdateView):
+    model = Solution
+    template_name = 'analysis/update_solution.html'
+
+    fields = [
+        'problem',
+        'research',
+        'solutions',
+        'resources',
+        'plan',
+        'test'
+    ]
+
+    def post(self, request, *args, **kwargs):
+        form = SolutionForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect('/updated_solution/')
+
+        return render(request, self.template_name, {'form': form})
+
+
 def saved(request):
     template = loader.get_template('analysis/saved.html')
     prb = Problem.objects.select_related()
-    context = {'prb': prb,}
+    slt = Solution.objects.select_related()
+
+    context = {'prb': prb, 'slt': slt}
 
     return HttpResponse(template.render(context, request))
+
 
 def updated_problem(request):
     template = loader.get_template('analysis/updated_problem.html')
     prb = Problem.objects.select_related()
-    context = {'prb': prb,}
+    context = {'prb': prb, }
 
     return HttpResponse(template.render(context, request))
 
-def delete(request, problem_id=None):
-    # import pdb
-    # pdb.set_trace()
+
+def updated_solution(request):
+    template = loader.get_template('analysis/updated_solution.html')
+    slt = Solution.objects.select_related()
+    context = {'slt': slt, }
+
+    return HttpResponse(template.render(context, request))
+
+
+def delete_problem(request, problem_id=None):
     problem_to_delete = Problem.objects.get(pk=problem_id)
     problem_to_delete.delete()
 
     return HttpResponse(index(request))
 
 
+def delete_solution(request, solution_id=None):
+    solution_to_delete = Solution.objects.get(pk=solution_id)
+    solution_to_delete.delete()
 
+    return HttpResponse(index(request))
