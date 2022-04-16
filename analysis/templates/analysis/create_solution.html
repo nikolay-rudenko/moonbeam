@@ -2,16 +2,20 @@
 
 {% block content %}
 
-    <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Successfully updated the information!</h4>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <form action="" method="POST">
+                    <table>
+                        {{ form }}
+                        {% csrf_token %}
+                    </table>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+            </div>
 
-    <ul class="list-group">
-        <div class="container">
-            <h3></h3>
-            <div class="row">
-                <div class="col-sm">
-                    {% for pr in prb %}
+            <div class="col-sm">
+                {% for pr in prb %}
                         <h5>Problem: {{ pr.title }}</h5>
                         <h6>Description</h6>
 
@@ -37,9 +41,8 @@
                         <a href="{% url 'update_problem' pr.pk %}" class="btn btn-warning" role="button" aria-pressed="true">Update</a>
                         <p></p>
                     {% endfor %}
-                </div>
             </div>
         </div>
-    </ul>
+    </div>
 
 {% endblock content %}
