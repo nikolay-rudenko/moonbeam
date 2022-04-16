@@ -13,12 +13,6 @@
                 <div class="col-sm">
                     {% for sl in slt %}
                         <h5>Solution: {{ sl.problem.title }}</h5>
-                        <a href="{% url 'delete_solution' sl.pk %}" class="btn btn-warning" role="button"
-                           aria-pressed="true">Delete</a>
-                        <a href="{% url 'update_solution' sl.pk %}" class="btn btn-warning" role="button"
-                           aria-pressed="true">Update</a>
-                        <p></p>
-                        <p></p>
                         <h6>Research</h6>
                         <li class="list-group-item">{{ sl.research }}</li>
                         <p></p>
@@ -33,6 +27,11 @@
                         <p></p>
                         <h6>Test</h6>
                         <li class="list-group-item">{{ sl.test }}</li>
+                        <p></p>
+                        <a href="{% url 'delete_solution' sl.pk %}" class="btn btn-warning" role="button"
+                           aria-pressed="true">Delete</a>
+                        <a href="{% url 'update_solution' sl.pk %}" class="btn btn-warning" role="button"
+                           aria-pressed="true">Update</a>
                         <p></p>
                     {% endfor %}
                 </div>
