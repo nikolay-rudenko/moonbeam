@@ -19,7 +19,7 @@ def index(request):
 class ProblemCreate(CreateView):
     model = Problem
     template_name = 'analysis/create.html'
-    fields = ['title', 'risks', 'description', 'parts', 'causes']
+    fields = ['title', 'description', 'parts', 'causes', 'risks']
 
     def post(self, request, *args, **kwargs):
         form = ProblemForm(request.POST)
@@ -34,7 +34,7 @@ class UpdateProblem(UpdateView):
     model = Problem
     template_name = 'analysis/update_problem.html'
 
-    fields = ['title', 'risks', 'description', 'parts', 'causes']
+    fields = ['title', 'description', 'parts', 'causes', 'risks']
 
     def post(self, request, *args, **kwargs):
         form = ProblemForm(request.POST)
@@ -47,15 +47,7 @@ class UpdateProblem(UpdateView):
 
 class SolutionCreate(CreateView):
     model = Solution
-
-    prb = Problem.objects.select_related()
-    slt = Solution.objects.select_related()
-
-    context = {'prb': prb, 'slt': slt}
-
     template_name = 'analysis/create_solution.html'
-
-
 
     fields = [
         'problem',
@@ -73,7 +65,6 @@ class SolutionCreate(CreateView):
             return HttpResponseRedirect('/saved/')
 
         return render(request, self.template_name, {'form': form})
-
 
 
 class UpdateSolution(UpdateView):
