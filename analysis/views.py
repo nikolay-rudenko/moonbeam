@@ -48,6 +48,7 @@ class UpdateProblem(UpdateView):
 class SolutionCreate(CreateView):
     model = Solution
     template_name = 'analysis/create_solution.html'
+    # 1
 
     fields = [
         'problem',
