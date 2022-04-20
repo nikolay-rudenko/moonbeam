@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .forms import ProblemForm, SolutionForm
 from django.shortcuts import render
 
-
+# starting page, second commit 
 def index(request):
     template = loader.get_template('analysis/index.html')
     prb = Problem.objects.select_related()
@@ -48,7 +48,6 @@ class UpdateProblem(UpdateView):
 class SolutionCreate(CreateView):
     model = Solution
     template_name = 'analysis/create_solution.html'
-    # 1
 
     fields = [
         'problem',
