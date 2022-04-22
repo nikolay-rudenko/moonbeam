@@ -65,6 +65,13 @@ class SolutionCreate(CreateView):
             return HttpResponseRedirect('/saved/')
 
         return render(request, self.template_name, {'form': form})
+    
+    def get_context_data(self, *args, **kwargs):
+        # template = loader.get_template('analysis/updated_problem.html')
+        prb = Problem.objects.select_related()
+        context = {'prb': prb}
+  
+        return render(self.request, self.template_name, context)
 
 
 class UpdateSolution(UpdateView):
