@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .forms import ProblemForm, SolutionForm
 from django.shortcuts import render
 
-# starting page 1
+# starting page 2
 def index(request):
     template = loader.get_template('analysis/index.html')
     prb = Problem.objects.select_related()
