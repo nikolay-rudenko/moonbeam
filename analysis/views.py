@@ -67,11 +67,9 @@ class SolutionCreate(CreateView):
         return render(request, self.template_name, {'form': form})
     
     def get_context_data(self, *args, **kwargs):
-        # template = loader.get_template('analysis/updated_problem.html')
         prb = Problem.objects.select_related()
-        context = {'prb': prb}
   
-        return render(self.request, self.template_name, context)
+        return {'prb': prb}
 
 
 class UpdateSolution(UpdateView):
