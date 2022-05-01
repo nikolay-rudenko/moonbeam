@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .forms import ProblemForm, SolutionForm
 from django.shortcuts import render
 
-# starting page 2
+
 def index(request):
     template = loader.get_template('analysis/index.html')
     prb = Problem.objects.select_related()
@@ -65,11 +65,12 @@ class SolutionCreate(CreateView):
             return HttpResponseRedirect('/saved/')
 
         return render(request, self.template_name, {'form': form})
-    
+
     def get_context_data(self, *args, **kwargs):
-        prb = Problem.objects.select_related()
-  
-        return {'prb': prb}
+        context = super().get_context_data(*args, **kwargs)
+        context['prb'] = Problem.objects.select_related()
+
+        return context
 
 
 class UpdateSolution(UpdateView):
