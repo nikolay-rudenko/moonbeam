@@ -66,11 +66,11 @@ class SolutionCreate(CreateView):
 
         return render(request, self.template_name, {'form': form})
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['prb'] = Problem.objects.select_related()
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super().get_context_data(*args, **kwargs)
+    #     context['prb'] = Problem.objects.select_related()
 
-        return context
+    #     return context
 
 
 class UpdateSolution(UpdateView):
